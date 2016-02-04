@@ -1,3 +1,57 @@
+/**
+ * Implementation notes
+ * 
+ * This module uses the list of public domain suffixes from https://publicsuffix.org. To avoid
+ * going through the whole list for every request, the list is loaded once and then parsed to build
+ * a search tree of the form described below.
+ * 
+ * As an example we take the following lines from the list:
+ * 
+ * org
+ * za.org
+ * eu.org
+ * de.eu.org
+ * fr.eu.org
+ * 
+ * After parsing the search would look like this:
+ * 
+ *          org
+ *         /   \
+ *       eu    za
+ *      /  \
+ *     de  fr
+ *
+ * Suppose we want to find the base domain for the following url:
+ * 
+ * http://sub1.sub2.domain.fr.eu.org/path1/path2
+ * 
+ * After stripping the url from scheme (http://) and path (/path1/path2) we would reverse the url
+ * and split it into its parts, ending up with this:
+ * 
+ * org eu fr domain sub2 sub1
+ * 
+ * Going through this list of tokens we would traverse the search tree and find the longest
+ * possible path that matches:
+ * 
+ * org eu fr
+ * 
+ * Then we add the next token to the result, reverse the result and join it again with periods:
+ * 
+ * domain.fr.eu.org
+ * 
+ * 
+ * Performance notes:
+ * The performance depends a lot on the number of different entry points at the first level of the
+ * search tree (eg: org, com, net). On the current list (Feb 2016) we have round about 1.1k first-
+ * level entries, which is roughly 10% of the list.
+ * A further optimization could be to sort the list alphabetically to enable a better heuristic for
+ * going through the tree. But that also raises the question of how to sort unicode characters and
+ * the like.
+ * One thing to note is that the very first exection of the getBaseDomain function is much longer
+ * than consecutive calls, since on this first call the list is loaded from internet, parsed and
+ * the search tree is build.
+ */
+
 let rootNode = undefined;
 
 /**
