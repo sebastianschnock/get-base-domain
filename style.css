@@ -1,0 +1,113 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+	background-color: #f4f4f4;
+}
+
+body * {
+	font-size: 20px;
+	box-sizing: border-box;
+}
+
+.get-base-domain {
+	text-align: center;
+	padding: 40% 5% 0;
+}
+
+@media screen and (orientation:landscape) {
+	.get-base-domain {
+		padding-top: 20%;
+	}	
+}
+
+.get-base-domain__header {
+	font-weight: bold;
+	font-size: 1.2em;
+/* 	margin-bottom: .6em; */
+}
+
+.get-base-domain__input {
+	max-width: 80%;
+  width: 20em;
+	height: 2em;
+	padding: 0 .5em;
+	margin-top: 1.5em;
+}
+
+.get-base-domain__execute-search {
+  margin: 1em;
+	background-color: #5dae5d;
+	border: 1px solid #404040;
+	border-radius: 5px;
+	height: 2em;
+	cursor: pointer;
+	padding: 0 1em;
+	font-weight: bold;
+	color: #fff;
+}
+
+.get-base-domain__execute-search:disabled {
+	cursor: not-allowed;
+}
+
+.get-base-domain__execute-search:hover {
+	background-color: #a0e5a0;
+}
+
+
+.get-base-domain__result {
+  word-wrap: break-word;
+}
+
+.get-base-domain__duration {
+  font-size: .8em;
+	margin-top: .5em;
+	color: #ff3232;
+}
