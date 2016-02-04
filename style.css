@@ -47,11 +47,25 @@ table {
 	border-spacing: 0;
 }
 
+
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('fonts/Montserrat-Regular.otf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Montserrat';
+	src: url('fonts/Montserrat-Bold.otf') format('truetype');
+	font-weight: bold;
+}
+
 body {
 	background-color: #f4f4f4;
 }
 
 body * {
+	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
 	box-sizing: border-box;
 }
