@@ -27,7 +27,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 		(0, _getBaseDomain2.default)(url, function (baseDomain) {
 			var t2 = window.performance.now();
 			var duration = (t2 - t1).toFixed(2);
-			resultElem.textContent = 'The base domain of ' + url + ' is ' + baseDomain;
+			resultElem.textContent = 'The base domain of ' + url + ' is: ' + baseDomain;
 			durationElem.textContent = 'executed in ' + duration + 'ms';
 			executeElem.disabled = false;
 			preventSubmit = false;
@@ -188,8 +188,11 @@ function findBaseDomain(url, node) {
 	var lookFurther = true;
 	var head = undefined;
 
+	// remove scheme and path from url string
+	var host = url.trim().match(/^(?:.*:\/\/)?(.[^\/]*)/)[1];
+
 	// split url into domain labels
-	var labels = url.trim().split('.').reverse();
+	var labels = host.split('.').reverse();
 
 	while (lookFurther) {
 
