@@ -103,8 +103,11 @@ function findBaseDomain(url, node) {
 	let lookFurther = true;
 	let head;
 
+	// remove scheme and path from url string
+	let host = url.trim().match(/^(?:.*:\/\/)?(.[^\/]*)/)[1];
+
 	// split url into domain labels
-	let labels = url.trim().split('.').reverse();
+	let labels = host.split('.').reverse();
 
 	while(lookFurther) {
 
