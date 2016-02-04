@@ -10,20 +10,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (function () {
 
 	var inputElem = document.querySelector('.get-base-domain__input');
+	var formElem = document.querySelector('.get-base-domain__form');
 	var executeElem = document.querySelector('.get-base-domain__execute-search');
 	var resultElem = document.querySelector('.get-base-domain__result');
 	var durationElem = document.querySelector('.get-base-domain__duration');
 
-	executeElem.addEventListener('click', function () {
+	var preventSubmit = false;
+
+	formElem.addEventListener('submit', function (event) {
+		event.preventDefault();
+		if (preventSubmit) return false;
 		var t1 = window.performance.now();
 		var url = inputElem.value;
 		executeElem.disabled = true;
+		preventSubmit = true;
 		(0, _getBaseDomain2.default)(url, function (baseDomain) {
 			var t2 = window.performance.now();
 			var duration = (t2 - t1).toFixed(2);
 			resultElem.textContent = 'The base domain of ' + url + ' is ' + baseDomain;
 			durationElem.textContent = 'executed in ' + duration + 'ms';
 			executeElem.disabled = false;
+			preventSubmit = false;
 		});
 	});
 })(document);
