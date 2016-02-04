@@ -12,7 +12,7 @@ cd get-base-domain
 npm install
 npm start
 ```
-Then point your browser to http:://127.0.0.1:3000
+Then point your browser to http://127.0.0.1:3000
 
 # Todo
 - check if we need to handle special cases like *.bd
