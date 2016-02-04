@@ -13,7 +13,6 @@ let rootNode = undefined;
 function getBaseDomain(url, done) {
 
 	if(rootNode === undefined) {
-		// loadSuffixList(() => done(findBaseDomain(url)))	;
 		rootNode = { children: [] };
 		loadSuffixList(list => {
 			const t1 = window.performance.now();
