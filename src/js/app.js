@@ -20,7 +20,7 @@ import getBaseDomain from './get-base-domain';
 		getBaseDomain(url, (baseDomain) => {
 			const t2 = window.performance.now();
 			const duration = (t2-t1).toFixed(2);
-			resultElem.textContent = `The base domain of ${url} is ${baseDomain}`;
+			resultElem.textContent = `The base domain of ${url} is: ${baseDomain}`;
 			durationElem.textContent = `executed in ${duration}ms`
 			executeElem.disabled = false;
 			preventSubmit = false;
