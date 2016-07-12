@@ -1,3 +1,5 @@
+[![Dependency Status](https://dependencyci.com/github/sebastianschnock/get-base-domain/badge)](https://dependencyci.com/github/sebastianschnock/get-base-domain)
+
 # get-base-domain
 A simple tool to compute the base domain from an url.
 It uses the list of public suffixes from https://publicsuffix.org
